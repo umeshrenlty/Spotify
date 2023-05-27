@@ -1,0 +1,27 @@
+export const access_Token = 'access_Token';
+export const authenticate_User = 'authenticate_User ';
+export const request_Refreshed_AccessToken = 'request_Refreshed_AccessToken';
+export const set_Token = 'set_Token';
+export const set_Refresh_Token = 'set_Refresh_Token';
+export const get_User_Playlists = 'get_User_Playlists';
+export const get_User_Profile = 'get_User_Profile';
+export const get_User_Recently_Playlists = 'get_User_Recently_Playlists';
+export const get_User_Top_Artists = 'get_User_Top_Artists';
+export const get_Category_Playlists = 'get_Category_Playlists';
+export const set_Category_Playlists = 'set_Category_Playlists';
+export const get_Featured_Playlists = 'get_Featured_Playlists';
+export const get_New_Releases = 'get_New_Releases';
+export const set_User_Playlists = 'set_User_Playlists';
+export const set_User_Info = 'set_User_Info';
+export const get_User_Follows = 'get_User_Follows';
+export const set_User_Recently_Playlists = 'set_User_Recently_Playlists';
+export const get_playList_media = 'get_playList_media';
+export const set_Media_Play_list = 'set_Media_Play_list';
+export const get_Album_media = 'get_Album_media';
+export const set_Album_Play_list = 'set_Album_Play_list';
+
+export const track_Player = 'track_Player';
+export const set_Current_Track = 'set_Current_Track';
+export const play_Track = 'play_Track';
+export const pause_Track = 'pause_Track';
+export const reset_Track = 'reset_Track';
