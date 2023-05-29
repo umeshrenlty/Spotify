@@ -6,16 +6,15 @@ import {
   TextInput,
   Image,
   FlatList,
-  TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Header from '../components/Header';
 
 import {COLORS, FONTS, SIZES, icons} from '../constants';
-import getCategory from '../Redux/actions/BrowseActions';
+
 import {useDispatch, useSelector} from 'react-redux';
-import {getSearchResult, setSearchResult} from '../Redux/actions/Search';
+import {getSearchResult} from '../Redux/actions/Search';
 import SearchItem from '../components/searchItem';
 const Search = () => {
   const dispatch = useDispatch();
@@ -24,15 +23,9 @@ const Search = () => {
   const searchData = useSelector(state => state.SearchData);
   console.log(searchData, 2222);
   const state = useSelector(state => state.browseData.catData);
-  console.log(state, 'serch');
+  // console.log(state, 'serch');
   const [isUserSearching, setIsUserSearching] = useState(false);
-
-  const searchTermHandler = input => {
-    setSearchTerm(input);
-    if (input.length > 0) setIsUserSearching(true);
-    else setIsUserSearching(false);
-  };
-
+  //delay by 500 mili seconds
   const useDebounce = (value, delay) => {
     const [debouncedValue, setDebouncedValue] = useState(value);
 
@@ -54,6 +47,11 @@ const Search = () => {
       dispatch(getSearchResult(searchTerm));
     }
   }, [debouncedSearchTerm]);
+  const searchTermHandler = input => {
+    setSearchTerm(input);
+    if (input.length > 0) setIsUserSearching(true);
+    else setIsUserSearching(false);
+  };
   const renderSearchResults = () => {
     if (searchData.isLoading)
       return <ActivityIndicator size="small" color="#0000ff" />;
@@ -72,7 +70,9 @@ const Search = () => {
             style={{
               color: COLORS.white,
               marginBottom: SIZES.padding,
-              ...FONTS.h1,
+              fontFamily: 'Poppins-Bold',
+              fontSize: 22,
+              letterSpacing: 2,
             }}>
             "{searchTerm}"
           </Text>
@@ -80,7 +80,8 @@ const Search = () => {
             style={{
               color: COLORS.lightGray,
               textAlign: 'center',
-              ...FONTS.body,
+              fontFamily: 'Poppins-Regular',
+              fontSize: 12,
             }}>
             Try searching again using a different spelling or keyword
           </Text>

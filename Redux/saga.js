@@ -216,10 +216,11 @@ function* getCategoryData() {
   console.log(data, 'hellllllllll');
   yield put({type: set_Category_Playlists, data});
 }
-function* searchItem(query) {
+function* searchItem({searchTerm}) {
+  console.log(searchTerm, 'searchTerm');
   const authData = yield AsyncStorage.getItem('authData');
   const {accessToken} = yield JSON.parse(authData);
-  const encodeSearchQuery = encodeURIComponent(query);
+  const encodeSearchQuery = encodeURIComponent(searchTerm);
   let searchResult = yield axios(
     `https://api.spotify.com/v1/search?q=${encodeSearchQuery}&type=track%2Cartist%2Calbum%2Cplaylist&limit=5`,
     {

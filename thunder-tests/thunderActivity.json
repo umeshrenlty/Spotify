@@ -1,0 +1,181 @@
+[
+  {
+    "_id": "2390201a-2a04-457d-b3c9-f3b143bc97ff",
+    "colId": "history",
+    "containerId": "",
+    "name": " `https://api.spotify.com/v1/search?q=${encodeSearchQuery}&type=track,artist,album,playlist&limit=5`,",
+    "url": " `https://api.spotify.com/v1/search?q=${encodeSearchQuery}&type=track,artist,album,playlist&limit=5`,",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-29T05:57:46.313Z",
+    "modified": "2023-05-29T05:57:46.313Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "q",
+        "value": "${encodeSearchQuery}",
+        "isPath": false
+      },
+      {
+        "name": "type",
+        "value": "track,artist,album,playlist",
+        "isPath": false
+      },
+      {
+        "name": "limit",
+        "value": "5`,",
+        "isPath": false
+      }
+    ],
+    "auth": {
+      "type": "bearer",
+      "bearer": "BQAWcNogaLAQ1WuIasLRdTvmlW_EnOWtu3RjsEz2sEB-xG6C1w…XJvMM9Z4LVfv-nzZROeQAcDA9jqxhHlXJs8Ii9n0WxiXQNvOw"
+    },
+    "tests": []
+  },
+  {
+    "_id": "6a95f990-49a3-40a7-a192-cc2ee657a82e",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://api.spotify.com/v1/search?q=justin&type=track,artist,album,playlist&limit=5",
+    "url": "https://api.spotify.com/v1/search?q=justin&type=track,artist,album,playlist&limit=5",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-29T06:00:17.198Z",
+    "modified": "2023-05-29T06:02:38.731Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "'Bearer'+  BQAWcNogaLAQ1WuIasLRdTvmlW_EnOWtu3RjsEz2sEB-xG6C1w…XJvMM9Z4LVfv-nzZROeQAcDA9jqxhHlXJs8Ii9n0WxiXQNvOw",
+        "isDisabled": true
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [
+      {
+        "name": "q",
+        "value": "justin",
+        "isPath": false
+      },
+      {
+        "name": "type",
+        "value": "track,artist,album,playlist",
+        "isPath": false
+      },
+      {
+        "name": "limit",
+        "value": "5",
+        "isPath": false
+      }
+    ],
+    "auth": {
+      "type": "bearer",
+      "bearer": "BQAWcNogaLAQ1WuIasLRdTvmlW_EnOWtu3RjsEz2sEB-xG6C1w…XJvMM9Z4LVfv-nzZROeQAcDA9jqxhHlXJs8Ii9n0WxiXQNvOw"
+    },
+    "tests": []
+  },
+  {
+    "_id": "57b06978-f231-471b-86aa-06cd21395f09",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://api.spotify.com/v1/search?q=justin&type=track%2Cartist%2Calbum%2Cplaylist&limit=5",
+    "url": "https://api.spotify.com/v1/search?q=justin&type=track%2Cartist%2Calbum%2Cplaylist&limit=5",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-29T06:03:41.515Z",
+    "modified": "2023-05-29T06:03:41.515Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "'Bearer'+  BQAWcNogaLAQ1WuIasLRdTvmlW_EnOWtu3RjsEz2sEB-xG6C1w…XJvMM9Z4LVfv-nzZROeQAcDA9jqxhHlXJs8Ii9n0WxiXQNvOw",
+        "isDisabled": true
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [
+      {
+        "name": "q",
+        "value": "justin",
+        "isPath": false
+      },
+      {
+        "name": "type",
+        "value": "track%2Cartist%2Calbum%2Cplaylist",
+        "isPath": false
+      },
+      {
+        "name": "limit",
+        "value": "5",
+        "isPath": false
+      }
+    ],
+    "auth": {
+      "type": "bearer",
+      "bearer": "BQAWcNogaLAQ1WuIasLRdTvmlW_EnOWtu3RjsEz2sEB-xG6C1w…XJvMM9Z4LVfv-nzZROeQAcDA9jqxhHlXJs8Ii9n0WxiXQNvOw"
+    },
+    "tests": []
+  },
+  {
+    "_id": "e6d37f77-518a-499e-be16-81ce2343755a",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://api.spotify.com/v1/search?q=${encodeSearchQuery}&type=track%2Cartist%2Calbum%2Cplaylist&limit=5",
+    "url": "https://api.spotify.com/v1/search?q=${encodeSearchQuery}&type=track%2Cartist%2Calbum%2Cplaylist&limit=5",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-29T06:04:19.442Z",
+    "modified": "2023-05-29T06:04:45.685Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [
+      {
+        "name": "q",
+        "value": "${encodeSearchQuery}",
+        "isPath": false
+      },
+      {
+        "name": "type",
+        "value": "track%2Cartist%2Calbum%2Cplaylist",
+        "isPath": false
+      },
+      {
+        "name": "limit",
+        "value": "5",
+        "isPath": false
+      }
+    ],
+    "auth": {
+      "type": "bearer",
+      "bearer": "BQAWcNogaLAQ1WuIasLRdTvmlW_EnOWtu3RjsEz2sEB-xG6C1w…XJvMM9Z4LVfv-nzZROeQAcDA9jqxhHlXJs8Ii9n0WxiXQNvOw"
+    },
+    "tests": []
+  }
+]

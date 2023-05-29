@@ -37,12 +37,3 @@ const SearchData = (state = initialState, action) => {
   }
 };
 export default SearchData;
-
-// state.isLoading = false
-// state.results = payload
-// state.results = [
-//   ...payload.artists.items,
-//   ...payload.albums.items,
-//   ...payload.tracks.items,
-//   ...payload.playlists.items,
-// ]
