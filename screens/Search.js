@@ -6,6 +6,8 @@ import {
   TextInput,
   Image,
   FlatList,
+  TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Header from '../components/Header';
@@ -13,11 +15,103 @@ import Header from '../components/Header';
 import {COLORS, FONTS, SIZES, icons} from '../constants';
 import getCategory from '../Redux/actions/BrowseActions';
 import {useDispatch, useSelector} from 'react-redux';
+import {getSearchResult, setSearchResult} from '../Redux/actions/Search';
+import SearchItem from '../components/searchItem';
 const Search = () => {
   const dispatch = useDispatch();
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const searchData = useSelector(state => state.SearchData);
+  console.log(searchData, 2222);
   const state = useSelector(state => state.browseData.catData);
   console.log(state, 'serch');
-  const [isUserSearching, setIsUserSearching] = useState(true);
+  const [isUserSearching, setIsUserSearching] = useState(false);
+
+  const searchTermHandler = input => {
+    setSearchTerm(input);
+    if (input.length > 0) setIsUserSearching(true);
+    else setIsUserSearching(false);
+  };
+
+  const useDebounce = (value, delay) => {
+    const [debouncedValue, setDebouncedValue] = useState(value);
+
+    useEffect(() => {
+      const handler = setTimeout(() => {
+        setDebouncedValue(value);
+      }, delay);
+
+      return () => {
+        clearTimeout(handler);
+      };
+    }, [value, delay]);
+
+    return debouncedValue;
+  };
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+  useEffect(() => {
+    if (debouncedSearchTerm) {
+      dispatch(getSearchResult(searchTerm));
+    }
+  }, [debouncedSearchTerm]);
+  const renderSearchResults = () => {
+    if (searchData.isLoading)
+      return <ActivityIndicator size="small" color="#0000ff" />;
+
+    if (!searchData.results) {
+      return (
+        <View
+          style={{
+            height: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingHorizontal: SIZES.padding,
+          }}>
+          <Text style={{color: COLORS.white, ...FONTS.h1}}>Couldn't find</Text>
+          <Text
+            style={{
+              color: COLORS.white,
+              marginBottom: SIZES.padding,
+              ...FONTS.h1,
+            }}>
+            "{searchTerm}"
+          </Text>
+          <Text
+            style={{
+              color: COLORS.lightGray,
+              textAlign: 'center',
+              ...FONTS.body,
+            }}>
+            Try searching again using a different spelling or keyword
+          </Text>
+        </View>
+      );
+    }
+
+    return (
+      <ScrollView>
+        {searchData.results
+          .filter(filteredItem => filteredItem.preview_url !== null)
+          .map(item => {
+            return (
+              <SearchItem
+                key={`${item.id}`}
+                searchTerm={searchTerm}
+                id={item.id}
+                type={item.type}
+                album={item.album}
+                images={item.images}
+                name={item.name}
+                artists={item.artists}
+                previewUrl={item.preview_url}
+                durationMs={item.duration_ms}
+                followers={item.followers}
+              />
+            );
+          })}
+      </ScrollView>
+    );
+  };
 
   return (
     <View style={styles.searchScreen}>
@@ -26,8 +120,8 @@ const Search = () => {
       <View style={styles.searchContainer}>
         <Image source={icons.search} style={styles.searchIcon} />
         <TextInput
-          // value={searchTerm}
-          // onChangeText={searchTermHandler}
+          value={searchTerm}
+          onChangeText={searchTermHandler}
           placeholder="What do you want to listen to ?"
           selectionColor={COLORS.primary}
           placeholderTextColor={COLORS.white}
@@ -36,6 +130,8 @@ const Search = () => {
       </View>
       <View style={styles.footerContainer}>
         {isUserSearching ? (
+          renderSearchResults()
+        ) : (
           <FlatList
             data={state}
             numColumns={2}
@@ -57,7 +153,7 @@ const Search = () => {
               );
             }}
           />
-        ) : null}
+        )}
       </View>
     </View>
   );

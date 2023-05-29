@@ -11,6 +11,7 @@ import {
 } from '../Redux/actions/action';
 import HorizontalCardContainer from '../components/HorizontalCardContainer';
 import getCategory from '../Redux/actions/BrowseActions';
+import {ScrollView} from 'react-native-gesture-handler';
 const Home = ({navigation}) => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.setUserData);

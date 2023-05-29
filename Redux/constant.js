@@ -25,3 +25,5 @@ export const set_Current_Track = 'set_Current_Track';
 export const play_Track = 'play_Track';
 export const pause_Track = 'pause_Track';
 export const reset_Track = 'reset_Track';
+export const get_Search_Result = 'get_Search_Result';
+export const set_Search_Result = 'set_Search_Result';

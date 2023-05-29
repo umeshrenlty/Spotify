@@ -7,6 +7,7 @@ import {
   authenticate_User,
   get_Album_media,
   get_Category_Playlists,
+  get_Search_Result,
   get_User_Playlists,
   get_User_Profile,
   get_User_Recently_Playlists,
@@ -14,6 +15,7 @@ import {
   set_Album_Play_list,
   set_Category_Playlists,
   set_Media_Play_list,
+  set_Search_Result,
   set_User_Info,
   set_User_Playlists,
   set_User_Recently_Playlists,
@@ -214,6 +216,32 @@ function* getCategoryData() {
   console.log(data, 'hellllllllll');
   yield put({type: set_Category_Playlists, data});
 }
+function* searchItem(query) {
+  const authData = yield AsyncStorage.getItem('authData');
+  const {accessToken} = yield JSON.parse(authData);
+  const encodeSearchQuery = encodeURIComponent(query);
+  let searchResult = yield axios(
+    `https://api.spotify.com/v1/search?q=${encodeSearchQuery}&type=track%2Cartist%2Calbum%2Cplaylist&limit=5`,
+    {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + accessToken,
+      },
+    },
+  )
+    .then(response => {
+      return response;
+    })
+    .catch(error => {
+      return error;
+    });
+
+  const {data} = searchResult;
+  console.log(searchResult, 'searchData 12333');
+  yield put({type: set_Search_Result, data});
+}
 function* getTokenSaga() {
   console.log(1111, 3455);
   try {
@@ -225,6 +253,7 @@ function* getTokenSaga() {
     yield takeEvery(get_User_Recently_Playlists, RecentlyPlaylists);
     yield takeEvery(get_playList_media, getMediaData);
     yield takeEvery(get_Album_media, getAlbumTracks);
+    yield takeEvery(get_Search_Result, searchItem);
   } catch (error) {
     console.error(error);
   }
